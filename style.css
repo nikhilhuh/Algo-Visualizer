@@ -23,7 +23,7 @@ nav {
   background-color: burlywood;
   height: 45px;
   width: 100%;
-  padding: 10px;
+  padding: 10px 12px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -32,9 +32,15 @@ nav {
 .logo {
     font-family: "Roboto", sans-serif;
     font-size: 1.6rem;
-    font-weight: 600;
+    font-weight: 800;
     font-style: normal;
+    color: black;
+    position: relative;
 }
+.blink {
+    opacity: 0;
+}
+
 .hamburger {
     margin-left: auto;
     list-style: none;
@@ -136,10 +142,11 @@ nav {
 /* styling the sorting visualizer */
 .sort{
     margin-top: 2rem;
-    min-height: 100dvh;
+    height: 100dvh;
+    max-height: 100dvh;
     width: 100%;
     background-color: blanchedalmond;
-    padding: 16px 12px;
+    padding: 12px 8px;
     display: flex;
     flex-direction: column;
     align-items: center;  
@@ -149,6 +156,8 @@ nav {
     font-size: 2.5rem;
     font-family: "Crimson Text", serif;
     font-weight: 800;
+    height: 10%;
+    max-height: 10%;
 }
 .bars{
     margin-top: 4rem;
@@ -156,13 +165,14 @@ nav {
     justify-content: center;
     align-items: flex-end;
     width: 100%;
+    height: 250px;
     gap: 4px; 
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     overflow: hidden; 
     padding: 0 10px; /* Add padding to prevent bars from touching edges */
 }
 .bar{
-    height: 600px;
+    height: 100%;
     width: 40px;
     max-width: 40px;
     background-color: black;
@@ -175,6 +185,8 @@ nav {
     flex-direction: column;
     text-align: center;
     align-items: center;
+    height: 30%;
+    max-height: 30%;
 }
 .number{
     display: flex;
@@ -182,7 +194,7 @@ nav {
     text-align: center;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     margin-bottom: 20px;
 }
 button{
@@ -218,6 +230,44 @@ input{
 }
 
 
+/* Footer styling */
+footer{
+    min-height: 150px;
+    width: 100%;
+    background-color: peru;
+    padding: 16px 12px;
+    div{
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: baseline;
+        text-align: center;
+    }
+    ul{
+        list-style: none;
+        li{
+            margin-bottom: 10px;
+        }
+    }
+    a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        text-decoration: none;
+        color: white
+    }
+}
+footer div ul li:nth-child(1){
+    color: black;
+    font-size: 1.8rem;
+}
+footer div ul li:nth-child(2){
+    color: white;
+    font-size: 1.5rem;
+}
+
 
 /* making key elements responsive */
 @media (max-width:760px){
@@ -232,6 +282,17 @@ input{
         ul{
             font-size: 22px;
         }
+    }
+    button{
+        pad: 6px 10px;
+    }
+    input{
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+    select{
+        padding: 6px 10px;
+        font-size: 14px;
     }
 }
 

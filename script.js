@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize sorting sections
   initializeSort(document.querySelector(".bubble"), bubbleSort);
   initializeSort(document.querySelector(".insertion"), insertionSort);
+  initializeSort(document.querySelector(".merge"), mergeSort);
   initializeSort(document.querySelector(".selection"), selectionSort);
-  initializeSort(document.querySelector(".merge"), mergeSort);   
 });
 
 function initializeSort(sortContainer, sortFunction) {
@@ -49,18 +49,37 @@ function visualizeArray(arr, sortContainer) {
   const barContainer = sortContainer.querySelector(".bars");
   barContainer.innerHTML = "";
 
+  // Function to set the dynamic height of the bar container
+  function setDynamicHeight() {
+    const viewportHeight = window.innerHeight;
+    const containerHeight = viewportHeight - viewportHeight * 0.45; // Equivalent to calc(100dvh - 40%)
+    barContainer.style.height = `${containerHeight}px`;
+  }
+
+  // Call setDynamicHeight on page load
+  setDynamicHeight();
+
+  // Update on window resize
+  window.addEventListener("resize", setDynamicHeight);
+
+  // Now calculate the width of the bars and maximum value
   const containerWidth = barContainer.clientWidth;
   const barWidth = (containerWidth - (arr.length - 1) * 4) / arr.length;
+  const maxValue = Math.max(...arr);
+  const maxHeight = parseFloat(getComputedStyle(barContainer).height);
 
   arr.forEach((value) => {
     const bar = document.createElement("div");
     bar.className = "bar";
-    bar.style.height = `${value * 5}px`;
+    const barHeight = (value / maxValue) * maxHeight;
+
+    bar.style.height = `${barHeight}px`;
     bar.style.width = `${barWidth}px`;
     bar.textContent = value;
     barContainer.appendChild(bar);
   });
 }
+
 
 function highlightElements(sortContainer, idx1, idx2) {
   const bars = sortContainer.querySelectorAll(".bar");
@@ -169,7 +188,7 @@ function selectionSort(arr, ms, sortContainer) {
 
       function innerStep() {
         if (j < arr.length) {
-          highlightElements(sortContainer,i, j);
+          highlightElements(sortContainer, i, j);
 
           setTimeout(() => {
             if (arr[j] < arr[minIndex]) {
@@ -208,7 +227,6 @@ function selectionSort(arr, ms, sortContainer) {
   step();
 }
 
-  
 //  Merge sort visualization
 function mergeSort(arr, ms, sortContainer) {
   const auxiliaryArray = arr.slice();
@@ -220,12 +238,15 @@ function mergeSort(arr, ms, sortContainer) {
     const mid = Math.floor((start + end) / 2);
     return mergeSortHelper(start, mid)
       .then(() => mergeSortHelper(mid + 1, end))
-      .then(() => new Promise(resolve => {
-        setTimeout(() => {
-          merge(start, mid, end);
-          resolve();
-        }, ms * (end - start)); // Delay for visualization
-      }));
+      .then(
+        () =>
+          new Promise((resolve) => {
+            setTimeout(() => {
+              merge(start, mid, end);
+              resolve();
+            }, ms * (end - start)); // Delay for visualization
+          })
+      );
   }
 
   function merge(start, mid, end) {
@@ -248,7 +269,7 @@ function mergeSort(arr, ms, sortContainer) {
           unhighlightElements(sortContainer, leftIndex - 1, rightIndex - 1);
           stepCount++;
 
-          if (stepCount < (mid - start + 1) + (end - mid)) {
+          if (stepCount < mid - start + 1 + (end - mid)) {
             processMergeStep();
           } else {
             finalizeMerge();
@@ -279,22 +300,13 @@ function mergeSort(arr, ms, sortContainer) {
   }
 
   // Start merge sort and handle the final visualization
-  mergeSortHelper(0, arr.length - 1)
-    .then(() => {
-      // Ensure final visualization after all sorting is complete
-      setTimeout(() => {
-        visualizeArray(auxiliaryArray, sortContainer);
-        blinkAllBars(sortContainer);
-        sortContainer.querySelector("#array-input").value = auxiliaryArray.join(", ");
-      }, ms * arr.length); // Adjust the delay as needed
-    });
+  mergeSortHelper(0, arr.length - 1).then(() => {
+    // Ensure final visualization after all sorting is complete
+    setTimeout(() => {
+      visualizeArray(auxiliaryArray, sortContainer);
+      blinkAllBars(sortContainer);
+      sortContainer.querySelector("#array-input").value =
+        auxiliaryArray.join(", ");
+    }, ms * arr.length); // Adjust the delay as needed
+  });
 }
-
-
-
-
-
-  
-  
-  
-  
