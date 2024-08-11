@@ -1,0 +1,243 @@
+/* removing default browser styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Platypi:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Varela+Round&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Indie+Flower&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Platypi:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Indie+Flower&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Platypi:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Varela+Round&display=swap');
+
+:root {
+  --background-color: white;
+  --color: black;
+}
+body {
+  background-color: var(--background-color);
+  color: var(--color);
+  position: relative;
+}
+
+/* styling the NAVBAR */
+nav {
+  background-color: burlywood;
+  height: 45px;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 99;
+}
+.logo {
+    font-family: "Roboto", sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    font-style: normal;
+}
+.hamburger {
+    margin-left: auto;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 30px; /* Adjust as needed */
+    height: 24px; /* Adjust as needed */
+    position: relative;
+}
+
+.hamburger li{
+    width: 20px;
+    height: 5px;
+    margin-bottom: 2px;
+    background-color: black; 
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.is-active li:nth-child(2){
+    opacity: 0; /* Hide the middle bar */
+}
+
+.hamburger.is-active li:first-child {
+    transform: rotate(-45deg) translate(-5px, 5px); /* Turn into X */
+}
+
+.hamburger.is-active li:last-child{
+    transform: rotate(45deg) translate(-5px, -5px); /* Turn into X */
+}
+
+.hamburger-menu{
+    position: fixed;
+    top: 45px;
+    left: 100%;
+    width: 100%;
+    padding: 16px;
+    z-index: 99;
+    background-color: burlywood;
+    transition: 0.5s;
+}
+.hamburger-menu.is-active{
+    left: 0;
+}
+.hamburger-menu ul{
+    list-style: none;
+}
+.hamburger-menu ul li{
+    font-size: 1.4rem;
+    width: 100%;   
+    padding: 12px 14px; 
+    cursor: pointer;
+    background-color: bisque;
+    margin-bottom: 6px;
+    text-align: center;
+}
+.hamburger-menu ul li:hover{
+    background-color: rgba(255, 228, 196, 0.8);
+    font-weight: 600;
+}
+
+/* Styling the sorting info */
+.info{
+    padding-top: 1rem;
+    padding-left: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.2rem;
+
+    h2{
+        font-size: 2.5rem;
+        font-weight: 800;
+        font-family: "Bebas Neue", sans-serif;
+    }
+    p{
+        font-size: 26px;
+        margin-top: 12px;
+        max-width: 60%;
+        margin-left: 8px;
+    }
+    ul{
+        padding-left: 20px;
+        list-style-position: inside;
+        font-size: 26px;
+        margin-top: 1rem;
+    }
+    li{
+        margin-bottom: 10px;
+    }
+}
+
+/* styling the sorting visualizer */
+.sort{
+    margin-top: 2rem;
+    min-height: 100dvh;
+    width: 100%;
+    background-color: blanchedalmond;
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+}
+.heading{
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: "Crimson Text", serif;
+    font-weight: 800;
+}
+.bars{
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    gap: 4px; 
+    margin-bottom: 4rem;
+    overflow: hidden; 
+    padding: 0 10px; /* Add padding to prevent bars from touching edges */
+}
+.bar{
+    height: 600px;
+    width: 40px;
+    max-width: 40px;
+    background-color: black;
+    transition: background-color 0.2s ease, height 0.2s ease;
+    color: white;
+    text-align: center;
+}
+.input-region{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+.number{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+button{
+    background-color: aquamarine;
+    cursor: pointer;
+    padding: 8px 14px;
+    outline: none;
+    border: 1px solid black;
+    font-weight: 600;
+    text-align: center;
+}
+.input-array{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+select{
+    cursor: pointer;
+    padding: 8px 12px;
+    outline: none;
+    border: none;
+    font-size: 14px;
+}
+input{
+    padding: 8px 12px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+}
+
+
+
+/* making key elements responsive */
+@media (max-width:760px){
+    .info{
+        h2{
+            font-size: 1.8rem;
+        }
+        p{
+            font-size: 22px;
+            max-width: 95%;
+        }
+        ul{
+            font-size: 22px;
+        }
+    }
+}
+
+@media (min-width:800px) {
+    .info{
+        padding-left: 15%;
+    }
+}
+

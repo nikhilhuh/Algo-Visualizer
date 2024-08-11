@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Sort Visualizer</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav>
+      <div class="logo">Sort Visualizer</div>
+      <ul class="hamburger">
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      <div class="hamburger-menu">
+        <ul>
+          <li id="bubble">Bubble Sort</li>
+          <li id="insertion">Insertion Sort</li>
+          <li id="merge">Merge Sort</li>
+          <li id="selection">Selection Sort</li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Sorting-info -->
+    <div class="info">
+      <div class="what">
+        <h2>What is a Sorting Algorithm?</h2>
+        <p>
+          Sorting algorithms are a set of instructions that take an array or
+          list as an input and arrange the items into a particular order.
+        </p>
+        <p>
+          Sorts are most commonly in numerical or a form of alphabetical (or
+          lexicographical) order, and can be in ascending (A-Z, 0-9) or
+          descending (Z-A, 9-0) order.
+        </p>
+      </div>
+      <div class="why">
+        <h2>Why Sorting Algorithms are Important?</h2>
+        <p>
+          Since they can often reduce the complexity of a problem, sorting
+          algorithms are very important in computer science. These algorithms
+          have direct applications in searching algorithms, database algorithms,
+          divide and conquer methods, data structure algorithms, and many more.
+        </p>
+      </div>
+      <div class="common">
+        <h2>Some Common Sorting Algorithms</h2>
+        <p>Some of the most common sorting algorithms are:</p>
+        <ul>
+          <li>Selection Sort</li>
+          <li>Bubble Sort</li>
+          <li>Insertion Sort</li>
+          <li>Merge Sort</li>
+          <li>Quick Sort</li>
+          <li>Heap Sort</li>
+          <li>Counting Sort</li>
+          <li>Radix Sort</li>
+          <li>Bucket Sort</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sorting Visualizer -->
+    <div class="bubble sort">
+      <div class="heading">Bubble Sort</div>
+      <div class="bars"></div>
+      <div class="input-region">
+        <div class="number">
+          <label for="number-input"
+            >Number of Elements (if generating random)</label
+          >
+          <select name="number-input" id="number-input">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
+          <button id="generateRandom">Generate Random</button>
+        </div>
+        <div class="input-array">
+          <label for="array-input"
+            >Enter Elements (separated by commas or spaces)</label
+          >
+          <input
+            type="text"
+            name="array-input"
+            id="array-input"
+            placeholder="Enter elements"
+          />
+        </div>
+        <div>
+            <label for="speed">Select Speed</label>
+            <select name="speed" id="speed">
+                <option value="100">0.1s</option>
+                <option value="500">0.5s</option>
+                <option value="1000">1s</option>
+                <option value="2000">2s</option>
+                <option value="5000">5s</option>
+            </select>
+            <button id="start">Start Visualizer</button>
+        </div>
+      </div>
+    </div>
+    <div class="insertion sort">
+      <div class="heading">Insertion Sort</div>
+      <div class="bars"></div>
+      <div class="input-region">
+        <div class="number">
+          <label for="number-input"
+            >Number of Elements (if generating random)</label
+          >
+          <select name="number-input" id="number-input">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
+          <button id="generateRandom">Generate Random</button>
+        </div>
+        <div class="input-array">
+          <label for="array-input"
+            >Enter Elements (separated by commas or spaces)</label
+          >
+          <input
+            type="text"
+            name="array-input"
+            id="array-input"
+            placeholder="Enter elements"
+          />
+        </div>
+        <div>
+            <label for="speed">Select Speed</label>
+            <select name="speed" id="speed">
+                <option value="100">0.1s</option>
+                <option value="500">0.5s</option>
+                <option value="1000">1s</option>
+                <option value="2000">2s</option>
+                <option value="5000">5s</option>
+            </select>
+            <button id="start">Start Visualizer</button>
+        </div>
+      </div>
+    </div>
+    <div class="merge sort">
+      <div class="heading">Merge Sort</div>
+      <div class="bars"></div>
+      <div class="input-region">
+        <div class="number">
+          <label for="number-input"
+            >Number of Elements (if generating random)</label
+          >
+          <select name="number-input" id="number-input">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
+          <button id="generateRandom">Generate Random</button>
+        </div>
+        <div class="input-array">
+          <label for="array-input"
+            >Enter Elements (separated by commas or spaces)</label
+          >
+          <input
+            type="text"
+            name="array-input"
+            id="array-input"
+            placeholder="Enter elements"
+          />
+        </div>
+        <div>
+            <label for="speed">Select Speed</label>
+            <select name="speed" id="speed">
+                <option value="100">0.1s</option>
+                <option value="500">0.5s</option>
+                <option value="1000">1s</option>
+                <option value="2000">2s</option>
+                <option value="5000">5s</option>
+            </select>
+            <button id="start">Start Visualizer</button>
+        </div>
+      </div>
+    </div>
+    <div class="selection sort">
+      <div class="heading">Selection Sort</div>
+      <div class="bars"></div>
+      <div class="input-region">
+        <div class="number">
+          <label for="number-input"
+            >Number of Elements (if generating random)</label
+          >
+          <select name="number-input" id="number-input">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
+          <button id="generateRandom">Generate Random</button>
+        </div>
+        <div class="input-array">
+          <label for="array-input"
+            >Enter Elements (separated by commas or spaces)</label
+          >
+          <input
+            type="text"
+            name="array-input"
+            id="array-input"
+            placeholder="Enter elements"
+          />
+        </div>
+        <div>
+            <label for="speed">Select Speed</label>
+            <select name="speed" id="speed">
+                <option value="100">0.1s</option>
+                <option value="500">0.5s</option>
+                <option value="1000">1s</option>
+                <option value="2000">2s</option>
+                <option value="5000">5s</option>
+            </select>
+            <button id="start">Start Visualizer</button>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const hamburger = document.querySelector(".hamburger");
+    const hamburger_menu = document.querySelector(".hamburger-menu");
+    const menuItems = document.querySelectorAll(".hamburger-menu ul li");
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("is-active");
+      hamburger_menu.classList.toggle("is-active");
+    });
+    menuItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        hamburger.classList.remove("is-active");
+        hamburger_menu.classList.remove("is-active");
+
+        const targetId = item.id;
+        const targetElement = document.querySelector(`.${targetId}`);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+  </script>
+  <script src="script.js"></script>
+</html>
