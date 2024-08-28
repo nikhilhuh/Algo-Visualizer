@@ -16,11 +16,15 @@
         <li></li>
       </ul>
       <div class="hamburger-menu">
-        <ul>
-          <li id="bubble">Bubble Sort</li>
-          <li id="insertion">Insertion Sort</li>
-          <li id="merge">Merge Sort</li>
-          <li id="selection">Selection Sort</li>
+        <ul class="main-ul">
+          <li class="dropdown-menu">Sorting</li>
+          <ul class="sub-ul">
+            <li id="bubble">Bubble Sort</li>
+            <li id="insertion">Insertion Sort</li>
+            <li id="merge">Merge Sort</li>
+            <li id="selection">Selection Sort</li>
+          </ul>
+          <li id="stack">Stack</li>
         </ul>
       </div>
     </nav>
@@ -235,11 +239,99 @@
       </div>
     </div>
 
+    <!-- Stack-info -->
+    <div class="info">
+      <div class="what">
+        <h2>Stack Data Structure</h2>
+        <p>
+          A Stack is a linear data structure that follows a particular order in
+          which the operations are performed. The order may be LIFO(Last In
+          First Out) or FILO(First In Last Out). LIFO implies that the element
+          that is inserted last, comes out first and FILO implies that the
+          element that is inserted first, comes out last.
+        </p>
+        <p>
+          Sorts are most commonly in numerical or a form of alphabetical (or
+          lexicographical) order, and can be in ascending (A-Z, 0-9) or
+          descending (Z-A, 9-0) order.
+        </p>
+      </div>
+      <div class="why">
+        <h2>Key Operations on Stack Data Structures</h2>
+        <ul>
+          <li>Push: Adds an element to the top of the stack.</li>
+          <li>Pop: Removes the top element from the stack.</li>
+          <li>Peek: Returns the top element without removing it.</li>
+          <li>IsEmpty: Checks if the stack is empty.</li>
+          <li>
+            IsFull: Checks if the stack is full (in case of fixed-size arrays).
+          </li>
+        </ul>
+      </div>
+      <div class="common">
+        <h2>Applications of Stack Data Structures</h2>
+        <ul>
+          <li>Recursion</li>
+          <li>Expression Evaluation and Parsing</li>
+          <li>Depth-First Search (DFS)</li>
+          <li>Undo/Redo Operations</li>
+          <li>Browser History</li>
+          <li>Function Calls</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Stack Visualizer -->
+    <div class="stack">
+      <div class="heading">Stack</div>
+      <div class="stack-main-container">
+        <div class="stack-container1">
+          <div class="container">
+            <div class="elements">10</div>
+            <div class="elements">10</div>
+            <div class="elements">10</div>
+            <div class="elements">10</div>
+            <div class="elements">10</div>
+            <div class="elements">10</div>
+          </div>
+        </div>
+        <div class="stack-container2">
+          <div class="push-div">
+            <label for="stack-input">Input Value to be pushed</label>
+            <input type="number" id="stack-input">
+            <button id="push">Push</button>
+          </div>
+          <div class="pop-div">
+            <button id="pop">Pop</button>
+            <button id="reset"> Reset</button>
+          </div>
+          <div class="stack-info">
+            <div>
+              <p>Top of the Stack:</p>
+              <p class="result" id="top"></p> 
+            </div>
+            <div>
+              <p>Last Pushed Item:</p>
+              <p class="result" id="last-pushed"></p> 
+            </div>
+            <div>
+              <p>Last Popped Item:</p>
+              <p class="result" id="last-popped"></p> 
+            </div>
+            <div>
+              <p>Size of the Stack:</p>
+              <p class="result">6</p> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
     <!-- Footer -->
     <footer>
       <div>
         <ul>
-          <li><strong>Sort Visualizer</strong></li>
+          <li><strong>Algo Visualizer</strong></li>
           <li>Nikhil Tiwari</li>
         </ul>
         <ul>
@@ -277,7 +369,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const logoDiv = document.querySelector(".logo");
-      const originalText = "Sort Visualizer";
+      const originalText = "Algo Visualizer";
       const characters = originalText.split("");
 
       function scrambleText() {
@@ -323,22 +415,43 @@
       const hamburger = document.querySelector(".hamburger");
       const hamburger_menu = document.querySelector(".hamburger-menu");
       const menuItems = document.querySelectorAll(".hamburger-menu ul li");
+
       hamburger.addEventListener("click", () => {
         hamburger.classList.toggle("is-active");
         hamburger_menu.classList.toggle("is-active");
       });
+      const dropdownMenu = document.querySelector(".dropdown-menu");
+      const subUl = document.querySelector(".sub-ul");
+
       menuItems.forEach((item) => {
         item.addEventListener("click", () => {
-          hamburger.classList.remove("is-active");
-          hamburger_menu.classList.remove("is-active");
-
           const targetId = item.id;
           const targetElement = document.querySelector(`.${targetId}`);
           if (targetElement) {
             targetElement.scrollIntoView({ behavior: "smooth" });
+
+            hamburger.classList.remove("is-active");
+            hamburger_menu.classList.remove("is-active");
+            subUl.style.display = "none";
           }
         });
       });
+      dropdownMenu.addEventListener("click", function () {
+        // Toggle the display of the sub-ul
+        if (subUl.style.display === "none" || subUl.style.display === "") {
+          subUl.style.display = "block";
+        } else {
+          subUl.style.display = "none";
+        }
+      });
+      // Hide the hamburger menu on scroll
+      // window.addEventListener("scroll", function () {
+      //   if (hamburger.classList.contains("is-active")) {
+      //     hamburger.classList.remove("is-active");
+      //     hamburger_menu.classList.remove("is-active");
+      //     subUl.style.display = "none";
+      //   }
+      // });
     });
   </script>
   <script src="script.js"></script>
