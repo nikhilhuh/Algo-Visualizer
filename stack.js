@@ -18,9 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Check for overflow
     if (stack.length >= MAXSIZE) {
       message.textContent = "Stack Overflow";
-      setTimeout(()=>{
-        message.textContent = ""
-      },3500)
       return;
     } else {
       stack.push(e);
@@ -32,9 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
       topElement.textContent = e;
       lastPushed.textContent = e;
       message.textContent = `Item ${e} is pushed into Stack`;
-      setTimeout(()=>{
-        message.textContent = ""
-      },3500)
       container.appendChild(element);
     }
   }
@@ -44,9 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Check for underflow
     if (stack.length === 0) {
       message.textContent = "Stack Underflow";
-      setTimeout(()=>{
-        message.textContent = ""
-      },3500)
       return;
     } else {
       let popElement = stack.pop();
@@ -56,11 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
       lastElement.style.animationName = "riseBeforeRemove";
       message.textContent = `Item ${popElement} is popped from Stack`;
       setTimeout(()=>{
-        message.textContent = ""
-      },4500)
-      setTimeout(()=>{
         container.removeChild(container.lastChild);
-      },1000)
+      },1200)
 
       if (stack.length === 0) {
         topElement.textContent = "";
