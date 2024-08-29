@@ -11,6 +11,7 @@
 :root {
   --background-color: white;
   --color: black;
+  --elements-height: 0px;
 }
 body {
   background-color: var(--background-color);
@@ -264,13 +265,14 @@ input{
 /* stack styling */
 .stack{
     margin-top: 2rem;
-    min-height: 100dvh;
+    height: 100dvh;
     width: 100%;
     background-color: blanchedalmond;
     padding: 12px 8px;
     display: flex;
     flex-direction: column;
     align-items: center;  
+    gap: 0;
 }
 .stack-main-container{
     width: 100%;
@@ -281,9 +283,12 @@ input{
     justify-content: space-evenly;
 }
 .stack-container1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .container{
         width: 200px;
-        min-height: 350px;
+        height: 350px;
         border: 2px solid black;
         border-top: none;
         border-bottom-left-radius: 10px;
@@ -297,13 +302,63 @@ input{
             align-items: center;
             justify-content: center;
             height: 50px;
-            background-color: green;
             border-radius: 4px;
             font-weight: 600;
             font-size: 1.2rem;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+        }
+        /* Set alternating background colors for the stack elements */
+        .elements:nth-child(odd) {
+            background-color: green;
+        }
+
+        .elements:nth-child(even) {
+            background-color: cadetblue;
+        }
+    }
+    .message-box{
+        margin-top: 2rem;
+        width: 200px;
+        height: 150px;
+        color: black;
+        font-size: 1.5rem;
+        text-align: center;
+        font-weight: 600;
+        background-color: darkkhaki;
+        border-radius: 10px;
+        padding: 12px 8px;
+        #message{
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-top: 2rem;
         }
     }
 }
+@keyframes fallInPlace {
+    0% {
+      transform: translateY(calc(-1 * (360px - var(--elements-height)))) translateX(-30%) rotate(10deg);
+    }
+    45% {
+      transform: translateY(calc(-1 * (360px - var(--elements-height)))) translateX(0) rotate(0);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes riseBeforeRemove {
+    0% {
+      transform: translateY(0);
+    }
+    55% {
+      transform: translateY(calc(-1 * (360px - var(--elements-height)))) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translateY(calc(-1 * (360px - var(--elements-height)))) translateX(30%) rotate(10deg);
+    }
+  }
+
 .stack-container2{
     width: 50%;
     height: 100%;
@@ -338,6 +393,9 @@ input{
         width: 90px;
         color: white;
     }
+    button:active {
+        transform: scale(0.95);
+    }
     .pop-div{
         width: 100%;
         display: flex;
@@ -354,11 +412,10 @@ input{
         width: 100%;
         gap: 25px;
         div{
-            width: 60%;
+            width: 70%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            text-align: left;
             font-size: 1.3rem;
             gap: 10%;
             p{
@@ -445,9 +502,35 @@ footer div ul li:nth-child(2){
         padding: 6px 10px;
         font-size: 14px;
     }
+    .stack{
+        height: auto;
+        gap: 2.5rem;
+
+    }
     .stack-main-container{
         flex-direction: column;
 
+    }
+    .stack-container1{
+        .message-box{
+            margin-bottom: 2.5rem;
+        }
+    }
+    .stack-container2{
+        gap: 2rem;
+        width: 100%;
+        margin-bottom: 2.5rem;
+        .stack-info{
+            div{
+                width: 90%;
+            }
+        }
+        
+    }
+    .push-div{
+        margin-top: 2rem;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
 
