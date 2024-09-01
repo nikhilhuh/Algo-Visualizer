@@ -174,8 +174,7 @@ nav {
 /* styling the sorting visualizer */
 .sort{
     margin-top: 2rem;
-    height: 100dvh;
-    max-height: 100dvh;
+    height: auto;
     width: 100%;
     background-color: blanchedalmond;
     padding: 12px 8px;
@@ -432,7 +431,40 @@ input{
     }
 }
 
+/* Code-examples styling */
+.code-examples {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.lang-buttons {
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.lang-buttons button.selected {
+    background-color: green;
+    color: white; /* Optional: make the text color white for better contrast */
+}
+
+.iframes {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.iframes iframe {
+    width: 60%;
+    display: none;
+}
 
 /* Footer styling */
 footer{
@@ -530,6 +562,9 @@ footer div ul li:nth-child(2){
         margin-top: 2rem;
         flex-wrap: wrap;
         justify-content: center;
+    }
+    .iframes iframe {
+        width: 90%;
     }
 }
 

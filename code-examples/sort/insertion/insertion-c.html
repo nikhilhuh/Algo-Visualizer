@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion Sort Implementation in C</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        code, pre {
+            background-color: #272822;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            white-space: pre-wrap;
+            font-size: 1rem;
+        }
+        pre {
+            overflow-x: auto; /* Adds horizontal scroll for long code lines */
+        }
+    </style>
+</head>
+<body>
+    <pre>
+<code>
+// C program for implementation of Insertion Sort
+
+#include &lt;stdio.h&gt;
+
+/* Function to sort array using insertion sort */
+void insertionSort(int arr[], int n)
+{
+    for (int i = 1; i &lt; n; ++i) {
+        int key = arr[i];
+        int j = i - 1;
+
+        /* Move elements of arr[0..i-1], that are
+           greater than key, to one position ahead
+           of their current position */
+        while (j &gt;= 0 && arr[j] &gt; key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
+}
+
+/* A utility function to print array of size n */
+void printArray(int arr[], int n)
+{
+    for (int i = 0; i &lt; n; ++i)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
+// Driver method
+int main()
+{
+    int arr[] = { 12, 11, 13, 5, 6 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    insertionSort(arr, n);
+    printArray(arr, n);
+
+    return 0;
+}
+</code>
+    </pre>
+</body>
+</html>

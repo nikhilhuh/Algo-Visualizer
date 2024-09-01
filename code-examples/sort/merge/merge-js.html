@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort Implementation in JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        code, pre {
+            background-color: #272822;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            white-space: pre-wrap;
+            font-size: 1rem;
+        }
+        pre {
+            overflow-x: auto; /* Adds horizontal scroll for long code lines */
+        }
+    </style>
+</head>
+<body>
+    <pre>
+        <code>
+// JavaScript program for implementation of merge sort
+
+function merge(arr, left, mid, right) {
+    const n1 = mid - left + 1;
+    const n2 = right - mid;
+
+    // Create temp arrays
+    const L = new Array(n1);
+    const R = new Array(n2);
+
+    // Copy data to temp arrays L[] and R[]
+    for (let i = 0; i &lt; n1; i++)
+        L[i] = arr[left + i];
+    for (let j = 0; j &lt; n2; j++)
+        R[j] = arr[mid + 1 + j];
+
+    let i = 0, j = 0;
+    let k = left;
+
+    // Merge the temp arrays back into arr[left..right]
+    while (i &lt; n1 && j &lt; n2) {
+        if (L[i] &lt;= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    // Copy the remaining elements of L[], if there are any
+    while (i &lt; n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy the remaining elements of R[], if there are any
+    while (j &lt; n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+            
+function mergeSort(arr, left, right) {
+    if (left &gt;= right)
+        return;
+
+    const mid = Math.floor(left + (right - left) / 2);
+    mergeSort(arr, left, mid);
+    mergeSort(arr, mid + 1, right);
+    merge(arr, left, mid, right);
+}
+
+function printArray(arr) {
+    console.log(arr.join(" "));
+}
+            
+// Driver code
+const arr = [12, 11, 13, 5, 6, 7];
+console.log("Given array is");
+printArray(arr);
+            
+mergeSort(arr, 0, arr.length - 1);
+            
+console.log("\nSorted array is");
+printArray(arr);          
+        </code>
+    </pre>
+</body>
+</html>

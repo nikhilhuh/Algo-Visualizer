@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort Implementation in C++</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        code, pre {
+            background-color: #272822;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            white-space: pre-wrap;
+            font-size: 1rem;
+        }
+        pre {
+            overflow-x: auto; /* Adds horizontal scroll for long code lines */
+        }
+    </style>
+</head>
+<body>
+    <pre>
+        <code>
+//C++ Program to implement merge sort
+
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+            
+// Merges two subarrays of arr[].
+// First subarray is arr[left..mid]
+// Second subarray is arr[mid+1..right]
+void merge(vector&lt;int&gt;& arr, int left, 
+                     int mid, int right)
+{
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+            
+    // Create temp vectors
+    vector&lt;int&gt; L(n1), R(n2);
+            
+    // Copy data to temp vectors L[] and R[]
+    for (int i = 0; i &lt; n1; i++)
+        L[i] = arr[left + i];
+    for (int j = 0; j &lt; n2; j++)
+        R[j] = arr[mid + 1 + j];
+
+    int i = 0, j = 0;
+    int k = left;
+            
+    // Merge the temp vectors back 
+    // into arr[left..right]
+    while (i &lt; n1 && j &lt; n2) {
+        if (L[i] &lt;= R[j]) {
+            arr[k] = L[i];
+            i++;
+        }
+        else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    // Copy the remaining elements of L[], 
+    // if there are any
+    while (i &lt; n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy the remaining elements of R[], 
+    // if there are any
+    while (j &lt; n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+            
+    // begin is for left index and end is right index
+    // of the sub-array of arr to be sorted
+    void mergeSort(vector&lt;int&gt;& arr, int left, int right)
+    {
+        if (left &gt;= right)
+            return;
+    
+        int mid = left + (right - left) / 2;
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        merge(arr, left, mid, right);
+    }
+    
+    // Function to print a vector
+    void printVector(vector&lt;int&gt;& arr)
+    {
+        for (int i = 0; i &lt; arr.size(); i++)
+            cout &lt;&lt; arr[i] &lt;&lt; " ";
+        cout &lt;&lt; endl;
+    }
+    
+    // Driver code
+    int main()
+    {
+        vector&lt;int&gt; arr = { 12, 11, 13, 5, 6, 7 };
+        int n = arr.size();
+    
+        cout &lt;&lt; "Given vector is \n";
+        printVector(arr);
+    
+        mergeSort(arr, 0, n - 1);
+    
+        cout &lt;&lt; "\nSorted vector is \n";
+        printVector(arr);
+        return 0;
+    }
+    
+        </code>
+    </pre>
+</body>
+</html>

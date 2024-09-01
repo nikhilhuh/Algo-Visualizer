@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort Implementation in C</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        code, pre {
+            background-color: #272822;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            white-space: pre-wrap; 
+            font-size: 1rem;
+        }
+        pre {
+            overflow-x: auto; /* Adds horizontal scroll for long code lines */
+        }
+    </style>
+</head>
+<body>
+    <pre><code>
+// Optimized C implementation of Bubble Sort
+
+#include &lt;stdbool.h&gt;
+#include &lt;stdio.h&gt;
+
+void swap(int* xp, int* yp) {
+    int temp = *xp;
+    *xp = *yp;
+    *yp = temp;
+}
+
+// An optimized version of Bubble Sort
+void bubbleSort(int arr[], int n) {
+    int i, j;
+    bool swapped;
+    for (i = 0; i &lt; n - 1; i++) {
+        swapped = false;
+        for (j = 0; j &lt; n - i - 1; j++) {
+            if (arr[j] &gt; arr[j + 1]) {
+                swap(&arr[j], &arr[j + 1]);
+                swapped = true;
+            }
+        }
+        // If no two elements were swapped by inner loop, then break
+        if (!swapped) break;
+    }
+}
+
+// Function to print an array
+void printArray(int arr[], int size) {
+    int i;
+    for (i = 0; i &lt; size; i++)
+        printf("%d ", arr[i]);
+}
+
+// Driver program to test above functions
+int main() {
+    int arr[] = { 64, 34, 25, 12, 22, 11, 90 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    bubbleSort(arr, n);
+    printf("Sorted array: \n");
+    printArray(arr, n);
+    return 0;
+}
+    </code></pre>
+</body>
+</html>

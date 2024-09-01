@@ -1,4 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+  showIFrame('stack-code',"stack-C++", "stack-button-C++");
+  showIFrame('selection-code',"selection-C++", "selection-button-C++");
+  showIFrame('insertion-code',"insertion-C++", "insertion-button-C++");
+  showIFrame('merge-code',"merge-C++", "merge-button-C++");
+  showIFrame('bubble-code',"bubble-C++", "bubble-button-C++");
+
   const logoDiv = document.querySelector(".logo");
   const originalText = "Algo Visualizer";
   const characters = originalText.split("");
@@ -75,12 +82,30 @@ document.addEventListener("DOMContentLoaded", function () {
       subUl.style.display = "none";
     }
   });
-  // Hide the hamburger menu on scroll
-  // window.addEventListener("scroll", function () {
-  //   if (hamburger.classList.contains("is-active")) {
-  //     hamburger.classList.remove("is-active");
-  //     hamburger_menu.classList.remove("is-active");
-  //     subUl.style.display = "none";
-  //   }
-  // });
 });
+
+// code-examples buttons
+function showIFrame(algo, iframeId, buttonId) {
+  // Hide all iframes
+  const algoContainer = document.querySelector(`.${algo}`);
+  const iframes = algoContainer.querySelectorAll("iframe");
+  iframes.forEach((iframe) => (iframe.style.display = "none"));
+
+  // Show the selected iframe
+  const selectedIframe = algoContainer.querySelector(`#${CSS.escape(iframeId)}`);
+  selectedIframe.style.display = "block";
+  if (selectedIframe) {
+  }
+
+  // Remove the 'selected' class from all buttons
+  const buttons = algoContainer.querySelectorAll(".lang-buttons button");
+  buttons.forEach((btn) => btn.classList.remove("selected"));
+
+  // Add the 'selected' class to the clicked button
+  const selectedButton = algoContainer.querySelector(`#${CSS.escape(buttonId)}`);
+  if (selectedButton) {
+    selectedButton.classList.add("selected");
+  }
+}
+
+

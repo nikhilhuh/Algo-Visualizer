@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion Sort Implementation in Java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        code, pre {
+            background-color: #272822;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            white-space: pre-wrap;
+            font-size: 1rem;
+        }
+        pre {
+            overflow-x: auto; /* Adds horizontal scroll for long code lines */
+        }
+    </style>
+</head>
+<body>
+    <pre>
+<code>
+// Java program for implementation of Insertion Sort
+
+public class InsertionSort {
+    /* Function to sort array using insertion sort */
+    void sort(int arr[])
+    {
+        int n = arr.length;
+        for (int i = 1; i &lt; n; ++i) {
+            int key = arr[i];
+            int j = i - 1;
+
+            /* Move elements of arr[0..i-1], that are
+               greater than key, to one position ahead
+               of their current position */
+            while (j &gt;= 0 && arr[j] &gt; key) {
+                arr[j + 1] = arr[j];
+                j = j - 1;
+            }
+            arr[j + 1] = key;
+        }
+    }
+
+    /* A utility function to print array of size n */
+    static void printArray(int arr[])
+    {
+        int n = arr.length;
+        for (int i = 0; i &lt; n; ++i)
+            System.out.print(arr[i] + " ");
+
+        System.out.println();
+    }
+
+    // Driver method
+    public static void main(String args[])
+    {
+        int arr[] = { 12, 11, 13, 5, 6 };
+
+        InsertionSort ob = new InsertionSort();
+        ob.sort(arr);
+
+        printArray(arr);
+    }
+}
+</code>
+    </pre>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort Implementation in Java</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        code, pre {
+            background-color: #272822;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            white-space: pre-wrap;
+            font-size: 1rem;
+        }
+        pre {
+            overflow-x: auto; /* Adds horizontal scroll for long code lines */
+        }
+    </style>
+</head>
+<body>
+    <pre><code>
+// Optimized Java implementation of Bubble sort
+
+import java.io.*;
+
+class GFG {
+
+    // An optimized version of Bubble Sort
+    static void bubbleSort(int arr[], int n) {
+        int i, j, temp;
+        boolean swapped;
+        for (i = 0; i &lt; n - 1; i++) {
+            swapped = false;
+            for (j = 0; j &lt; n - i - 1; j++) {
+                if (arr[j] &gt; arr[j + 1]) {
+                    // Swap arr[j] and arr[j+1]
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+            // If no two elements were swapped by inner loop, then break
+            if (!swapped) break;
+        }
+    }
+
+    // Function to print an array
+    static void printArray(int arr[], int size) {
+        for (int i = 0; i &lt; size; i++)
+            System.out.print(arr[i] + " ");
+        System.out.println();
+    }
+
+    // Driver program
+    public static void main(String args[]) {
+        int arr[] = { 64, 34, 25, 12, 22, 11, 90 };
+        int n = arr.length;
+        bubbleSort(arr, n);
+        System.out.println("Sorted array: ");
+        printArray(arr, n);
+    }
+}
+    </code></pre>
+</body>
+</html>

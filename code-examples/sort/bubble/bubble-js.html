@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort Implementation in JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        code, pre {
+            background-color: #272822;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            white-space: pre-wrap;
+            font-size: 1rem;
+        }
+        pre {
+            overflow-x: auto; /* Adds horizontal scroll for long code lines */
+        }
+    </style>
+</head>
+<body>
+    <pre><code>
+// Optimized JavaScript implementation of Bubble Sort
+
+function bubbleSort(arr, n) {
+    var i, j, temp;
+    var swapped;
+    for (i = 0; i &lt; n - 1; i++) {
+        swapped = false;
+        for (j = 0; j &lt; n - i - 1; j++) {
+            if (arr[j] &gt; arr[j + 1]) {
+                // Swap arr[j] and arr[j+1]
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                swapped = true;
+            }
+        }
+        // If no two elements were swapped by inner loop, then break
+        if (!swapped) break;
+    }
+}
+
+// Function to print an array
+function printArray(arr, size) {
+    for (var i = 0; i &lt; size; i++)
+        console.log(arr[i] + " ");
+}
+
+// Driver program
+var arr = [64, 34, 25, 12, 22, 11, 90];
+var n = arr.length;
+bubbleSort(arr, n);
+console.log("Sorted array: ");
+printArray(arr, n);
+    </code></pre>
+</body>
+</html>
