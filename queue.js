@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
         element.className = "frame";
         element.innerHTML = e;
         element.style.animationName = "comeInPlace";
+        const height = e*20
+        element.style.height = `${height}px`
         container.appendChild(element);
         message.textContent = `Enqueued : ${e}`;
       }
