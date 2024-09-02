@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue Implementation in C++</title>
+    <style>
+        /* Optional styling to make the code block look nicer */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        code, pre {
+            background-color: #272822;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            white-space: pre-wrap; 
+            font-size: 1rem;
+        }
+        pre {
+            overflow-x: auto; /* Adds horizontal scroll for long code lines */
+        }
+    </style>
+</head>
+<body>
+    <pre>
+        <code>
+// CPP program for array
+// implementation of queue
+
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+// A structure to represent a queue
+class Queue {
+public:
+	int front, rear, size;
+	unsigned capacity;
+	int* array;
+};
+
+// function to create a queue
+// of given capacity.
+// It initializes size of queue as 0
+Queue* createQueue(unsigned capacity)
+{
+	Queue* queue = new Queue();
+	queue-&gt;capacity = capacity;
+	queue-&gt;front = queue-&gt;size = 0;
+
+	// This is important, see the enqueue
+	queue-&gt;rear = capacity - 1;
+	queue-&gt;array = new int[queue-&gt;capacity];
+	return queue;
+}
+
+// Queue is full when size
+// becomes equal to the capacity
+int isFull(Queue* queue)
+{
+	return (queue-&gt;size == queue-&gt;capacity);
+}
+
+// Queue is empty when size is 0
+int isEmpty(Queue* queue)
+{
+	return (queue-&gt;size == 0);
+}
+
+// Function to add an item to the queue.
+// It changes rear and size
+void enqueue(Queue* queue, int item)
+{
+	if (isFull(queue))
+		return;
+	queue-&gt;rear = (queue-&gt;rear + 1)
+				% queue-&gt;capacity;
+	queue-&gt;array[queue-&gt;rear] = item;
+	queue-&gt;size = queue-&gt;size + 1;
+	cout &lt;&lt; item &lt;&lt; " enqueued to queue\n";
+}
+
+// Function to remove an item from queue.
+// It changes front and size
+int dequeue(Queue* queue)
+{
+	if (isEmpty(queue))
+		return INT_MIN;
+	int item = queue-&gt;array[queue-&gt;front];
+	queue-&gt;front = (queue-&gt;front + 1)
+				% queue-&gt;capacity;
+	queue-&gt;size = queue-&gt;size - 1;
+	return item;
+}
+
+// Function to get front of queue
+int front(Queue* queue)
+{
+	if (isEmpty(queue))
+		return INT_MIN;
+	return queue-&gt;array[queue-&gt;front];
+}
+
+// Function to get rear of queue
+int rear(Queue* queue)
+{
+	if (isEmpty(queue))
+		return INT_MIN;
+	return queue-&gt;array[queue-&gt;rear];
+}
+
+// Driver code
+int main()
+{
+	Queue* queue = createQueue(1000);
+
+	enqueue(queue, 10);
+	enqueue(queue, 20);
+	enqueue(queue, 30);
+	enqueue(queue, 40);
+
+	cout &lt;&lt; dequeue(queue)
+		&lt;&lt; " dequeued from queue\n";
+
+	cout &lt;&lt; "Front item is "
+		&lt;&lt; front(queue) &lt;&lt; endl;
+	cout &lt;&lt; "Rear item is "
+		&lt;&lt; rear(queue) &lt;&lt; endl;
+
+	return 0;
+}
+        </code>
+    </pre>
+</body>
+</html>

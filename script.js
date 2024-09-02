@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   showIFrame('stack-code',"stack-C++", "stack-button-C++");
+  showIFrame('queue-code',"queue-C++", "queue-button-C++");
   showIFrame('selection-code',"selection-C++", "selection-button-C++");
   showIFrame('insertion-code',"insertion-C++", "insertion-button-C++");
   showIFrame('merge-code',"merge-C++", "merge-button-C++");

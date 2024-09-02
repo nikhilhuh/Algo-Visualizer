@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue Implementation in C</title>
+    <style>
+        /* Optional styling to make the code block look nicer */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        code, pre {
+            background-color: #272822;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            white-space: pre-wrap; 
+            font-size: 1rem;
+        }
+        pre {
+            overflow-x: auto; /* Adds horizontal scroll for long code lines */
+        }
+    </style>
+</head>
+<body>
+    <pre>
+        <code>
+// C program for array implementation of queue
+
+#include &lt;limits.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+// A structure to represent a queue
+struct Queue {
+	int front, rear, size;
+	unsigned capacity;
+	int* array;
+};
+
+// function to create a queue
+// of given capacity.
+// It initializes size of queue as 0
+struct Queue* createQueue(unsigned capacity)
+{
+	struct Queue* queue = (struct Queue*)malloc(
+		sizeof(struct Queue));
+	queue-&gt;capacity = capacity;
+	queue-&gt;front = queue-&gt;size = 0;
+
+	// This is important, see the enqueue
+	queue-&gt;rear = capacity - 1;
+	queue-&gt;array = (int*)malloc(
+		queue-&gt;capacity * sizeof(int));
+	return queue;
+}
+
+// Queue is full when size becomes
+// equal to the capacity
+int isFull(struct Queue* queue)
+{
+	return (queue-&gt;size == queue-&gt;capacity);
+}
+
+// Queue is empty when size is 0
+int isEmpty(struct Queue* queue)
+{
+	return (queue-&gt;size == 0);
+}
+
+// Function to add an item to the queue.
+// It changes rear and size
+void enqueue(struct Queue* queue, int item)
+{
+	if (isFull(queue))
+		return;
+	queue-&gt;rear = (queue-&gt;rear + 1)
+				% queue-&gt;capacity;
+	queue-&gt;array[queue-&gt;rear] = item;
+	queue-&gt;size = queue-&gt;size + 1;
+	printf("%d enqueued to queue\n", item);
+}
+
+// Function to remove an item from queue.
+// It changes front and size
+int dequeue(struct Queue* queue)
+{
+	if (isEmpty(queue))
+		return INT_MIN;
+	int item = queue-&gt;array[queue-&gt;front];
+	queue-&gt;front = (queue-&gt;front + 1)
+				% queue-&gt;capacity;
+	queue-&gt;size = queue-&gt;size - 1;
+	return item;
+}
+
+// Function to get front of queue
+int front(struct Queue* queue)
+{
+	if (isEmpty(queue))
+		return INT_MIN;
+	return queue-&gt;array[queue-&gt;front];
+}
+
+// Function to get rear of queue
+int rear(struct Queue* queue)
+{
+	if (isEmpty(queue))
+		return INT_MIN;
+	return queue-&gt;array[queue-&gt;rear];
+}
+
+// Driver program to test above functions./
+int main()
+{
+	struct Queue* queue = createQueue(1000);
+
+	enqueue(queue, 10);
+	enqueue(queue, 20);
+	enqueue(queue, 30);
+	enqueue(queue, 40);
+
+	printf("%d dequeued from queue\n\n",
+		dequeue(queue));
+
+	printf("Front item is %d\n", front(queue));
+	printf("Rear item is %d\n", rear(queue));
+
+	return 0;
+}
+
+        </code>
+    </pre>
+</body>
+</html>

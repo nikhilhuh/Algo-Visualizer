@@ -190,6 +190,12 @@ nav {
     height: 10%;
     max-height: 10%;
 }
+.heading2{
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+}
 .bars{
     margin-top: 4rem;
     display: flex;
@@ -632,6 +638,9 @@ footer div ul li:nth-child(2){
 
 /* making key elements responsive */
 @media (max-width:760px){
+    .logo{
+        font-size: 1.2rem;
+    }
     .dropdown-menu::after{
         left: 85%;
     }
@@ -692,7 +701,7 @@ footer div ul li:nth-child(2){
         width: 100%;
     }
     .queue-container1 img{
-        height: 3rem;
+        height: 2rem;
     }
     .queue-container2{
         flex-direction: column;
@@ -706,6 +715,14 @@ footer div ul li:nth-child(2){
     }
     .iframes iframe {
         width: 90%;
+    }
+    footer div ul li:nth-child(1){
+        color: black;
+        font-size: 1.2rem;
+    }
+    footer div ul li:nth-child(2){
+        color: white;
+        font-size: 1rem;
     }
 }
 
