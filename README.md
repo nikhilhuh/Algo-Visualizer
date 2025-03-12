@@ -83,7 +83,7 @@ We welcome contributions! If you’d like to improve this project:
 4. Push to your branch and submit a Pull Request.
 
 ## 👨‍💻 Author
-- **Nikhil Tiwari** ([GitHub Profile](https://github.com/nikhilhuh))
+- **Nikhil Tiwari** ([Linkedin Profile](www.linkedin.com/in/nikhilhuh))
 
 Feel free to modify and enhance the project. Happy coding! 🚀
 
